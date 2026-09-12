@@ -4,7 +4,7 @@ using namespace std  ;
 
 class Shape {
     public : 
-       void draw(){
+        virtual void draw(){
         cout<<"generic Drawing.."<<'\n'; 
        }
 };
@@ -13,21 +13,21 @@ class Shape {
 class circle : public Shape
 {
     public : 
-       void draw(){
+       void draw() override {
         cout<<"circle drawing.."<<'\n' ;
        }      
 };
 class rectangle : public Shape
 {
     public : 
-       void draw(){
+       void draw() override {
         cout<<"rectangle drawing.."<<'\n' ;
        }      
 };
 
 
 void shapeDrawing(Shape *s){
-    s->draw() ;
+    s->draw() ; //draw is polymorphic 
 }
 int main(){
     circle c ;
@@ -35,5 +35,8 @@ int main(){
     //upcasting
     shapeDrawing(&c) ; 
     shapeDrawing(&r) ;
+
+    // without virtual keyword 
+    
     return 0 ;
 }
